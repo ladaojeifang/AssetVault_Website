@@ -43,6 +43,10 @@ Copy `.env.example` to `.env` and adjust `BASE_PATH` / `SITE_URL` if needed.
 
 ## Deploy to GitHub Pages
 
+完整步骤（含排错、pnpm 11、BASE_PATH、Git 身份等）见 **[doc/github-pages-deploy-guide.md](doc/github-pages-deploy-guide.md)**。
+
+快速版：
+
 1. Create a public repo (e.g. `AssetVault_Website`) and push this directory.
 2. **Settings → Pages → Build and deployment**: Source = **GitHub Actions**.
 3. Push to `main` — workflow `.github/workflows/pages.yml` builds and deploys.
