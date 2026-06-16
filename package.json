@@ -8,9 +8,6 @@
     "build": "astro build",
     "preview": "astro preview"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
-  },
   "dependencies": {
     "astro": "^5.7.0"
   }

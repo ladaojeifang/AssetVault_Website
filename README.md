@@ -12,14 +12,15 @@ pnpm install
 pnpm dev
 ```
 
-If `pnpm install` warns about ignored build scripts (esbuild/sharp), run once:
+If `pnpm install` warns about ignored build scripts (esbuild/sharp), ensure `pnpm-workspace.yaml` has:
 
-```bash
-pnpm approve-builds
-# select esbuild and sharp, then pnpm install again
+```yaml
+allowBuilds:
+  esbuild: true
+  sharp: true
 ```
 
-Or build directly: `node ./node_modules/astro/astro.js build`
+Or run: `pnpm approve-builds --all`
 
 Open `http://localhost:4321`. For project-style Pages paths during dev:
 
