@@ -1,0 +1,24 @@
+---
+import type { SiteContent } from '../i18n/types'
+
+interface Props {
+  content: SiteContent
+}
+
+const { content } = Astro.props
+---
+
+<section id="features" class="section">
+  <div class="container">
+    <h2 class="section-title">{content.features.title}</h2>
+    <p class="section-subtitle">{content.features.subtitle}</p>
+    <div class="card-grid">
+      {content.features.items.map((item) => (
+        <article class="card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

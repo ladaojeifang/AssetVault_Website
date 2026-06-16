@@ -1,0 +1,75 @@
+---
+import type { SiteContent } from '../i18n/types'
+import { links } from '../i18n/types'
+
+interface Props {
+  content: SiteContent
+}
+
+const { content } = Astro.props
+---
+
+<section id="download" class="section download">
+  <div class="container download-inner">
+    <div>
+      <h2 class="section-title">{content.download.title}</h2>
+      <p class="section-subtitle">{content.download.subtitle}</p>
+      <p class="requirements">{content.download.requirements}</p>
+      <p class="alpha">{content.download.alpha}</p>
+    </div>
+    <div class="download-actions">
+      <a class="btn btn-primary btn-lg" href={links.releases} target="_blank" rel="noopener noreferrer">
+        {content.download.primary}
+      </a>
+      <a class="btn btn-secondary btn-lg" href={links.extRepo} target="_blank" rel="noopener noreferrer">
+        {content.download.secondary}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .download {
+    padding-bottom: 6rem;
+  }
+
+  .download-inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(61, 126, 255, 0.08), rgba(18, 21, 26, 0.9));
+  }
+
+  @media (min-width: 768px) {
+    .download-inner {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .requirements,
+  .alpha {
+    margin: 0.5rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    max-width: 36rem;
+  }
+
+  .alpha {
+    color: #c9b46a;
+  }
+
+  .download-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 220px;
+  }
+
+  .btn-lg {
+    padding: 0.9rem 1.5rem;
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,107 @@
+---
+import type { SiteContent } from '../i18n/types'
+
+interface Props {
+  content: SiteContent
+}
+
+const { content } = Astro.props
+const { desktop, extension } = content.products
+---
+
+<section id="products" class="section products">
+  <div class="container">
+    <h2 class="section-title">{content.products.title}</h2>
+    <p class="section-subtitle">{content.products.subtitle}</p>
+    <div class="product-grid">
+      <article class="product-card">
+        <div class="product-icon desktop" aria-hidden="true"></div>
+        <h3>{desktop.title}</h3>
+        <p>{desktop.description}</p>
+        <ul>
+          {desktop.bullets.map((b) => (
+            <li>{b}</li>
+          ))}
+        </ul>
+        <a class="product-link" href={desktop.link} target="_blank" rel="noopener noreferrer">
+          GitHub →
+        </a>
+      </article>
+      <article class="product-card">
+        <div class="product-icon extension" aria-hidden="true"></div>
+        <h3>{extension.title}</h3>
+        <p>{extension.description}</p>
+        <ul>
+          {extension.bullets.map((b) => (
+            <li>{b}</li>
+          ))}
+        </ul>
+        <a class="product-link" href={extension.link} target="_blank" rel="noopener noreferrer">
+          GitHub →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .products {
+    background: linear-gradient(180deg, transparent, rgba(18, 21, 26, 0.6) 30%, transparent);
+  }
+
+  .product-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+  }
+
+  .product-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  .product-icon.desktop {
+    background: linear-gradient(135deg, rgba(61, 126, 255, 0.35), rgba(61, 126, 255, 0.08));
+    border: 1px solid rgba(61, 126, 255, 0.4);
+  }
+
+  .product-icon.extension {
+    background: linear-gradient(135deg, rgba(61, 214, 140, 0.3), rgba(61, 214, 140, 0.08));
+    border: 1px solid rgba(61, 214, 140, 0.35);
+  }
+
+  .product-card h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  .product-card > p {
+    margin: 0 0 1rem;
+    color: var(--text-muted);
+  }
+
+  .product-card ul {
+    margin: 0 0 1.25rem;
+    padding-left: 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .product-card li + li {
+    margin-top: 0.35rem;
+  }
+
+  .product-link {
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+</style>

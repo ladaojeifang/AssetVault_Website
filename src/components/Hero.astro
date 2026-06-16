@@ -1,0 +1,223 @@
+---
+import type { SiteContent } from '../i18n/types'
+import { links } from '../i18n/types'
+
+interface Props {
+  content: SiteContent
+}
+
+const { content } = Astro.props
+const docsUrl = content.locale === 'zh' ? links.helpZh : links.helpEn
+const titleLines = content.hero.title.split('\n')
+---
+
+<section class="hero">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="container hero-inner">
+    <p class="badge">{content.hero.badge}</p>
+    <h1>
+      {titleLines.map((line) => (
+        <>
+          {line}
+          <br />
+        </>
+      ))}
+    </h1>
+    <p class="subtitle">{content.hero.subtitle}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={links.releases} target="_blank" rel="noopener noreferrer">
+        {content.hero.ctaDownload}
+      </a>
+      <a class="btn btn-secondary" href={links.extRepo} target="_blank" rel="noopener noreferrer">
+        {content.hero.ctaExtension}
+      </a>
+      <a class="btn btn-secondary" href={docsUrl} target="_blank" rel="noopener noreferrer">
+        {content.hero.ctaDocs}
+      </a>
+    </div>
+    <p class="note">{content.hero.note}</p>
+
+    <div class="hero-panel" aria-hidden="true">
+      <div class="panel-top">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="panel-title">AssetVault Pro</span>
+      </div>
+      <div class="panel-body">
+        <div class="thumb-grid">
+          {Array.from({ length: 8 }).map(() => (
+            <div class="thumb"></div>
+          ))}
+        </div>
+        <div class="panel-sidebar">
+          <div class="line w80"></div>
+          <div class="line w60"></div>
+          <div class="line w70"></div>
+          <div class="tag"></div>
+          <div class="tag short"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 4.5rem 0 2rem;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    inset: -20% 10% auto;
+    height: 420px;
+    background: radial-gradient(ellipse at center, rgba(61, 126, 255, 0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+  }
+
+  .badge {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: #9ec0ff;
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+  }
+
+  h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    max-width: 14ch;
+  }
+
+  .subtitle {
+    margin: 0 0 1.75rem;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    max-width: 42rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .note {
+    margin: 0 0 2.5rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    max-width: 40rem;
+  }
+
+  .hero-panel {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, #141820 0%, #0f1218 100%);
+    box-shadow: var(--shadow);
+    max-width: 720px;
+  }
+
+  .panel-top {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2a3140;
+  }
+
+  .panel-title {
+    margin-left: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+  }
+
+  .panel-body {
+    display: grid;
+    grid-template-columns: 1fr 140px;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 200px;
+  }
+
+  .thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+
+  .thumb {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1c2230, #252d3d);
+    border: 1px solid #2a3140;
+  }
+
+  .panel-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .line {
+    height: 8px;
+    border-radius: 4px;
+    background: #222833;
+  }
+
+  .w80 { width: 80%; }
+  .w60 { width: 60%; }
+  .w70 { width: 70%; }
+
+  .tag {
+    margin-top: 0.5rem;
+    height: 22px;
+    width: 100%;
+    border-radius: 6px;
+    background: rgba(61, 126, 255, 0.2);
+    border: 1px solid rgba(61, 126, 255, 0.35);
+  }
+
+  .tag.short {
+    width: 65%;
+    background: rgba(61, 214, 140, 0.15);
+    border-color: rgba(61, 214, 140, 0.3);
+  }
+
+  @media (max-width: 640px) {
+    .panel-body {
+      grid-template-columns: 1fr;
+    }
+
+    .panel-sidebar {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .tag,
+  .tag.short {
+      width: 40%;
+    }
+  }
+</style>

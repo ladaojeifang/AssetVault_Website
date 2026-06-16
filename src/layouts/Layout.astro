@@ -1,0 +1,171 @@
+---
+import '../styles/global.css'
+import type { SiteContent } from '../i18n/types'
+import { links } from '../i18n/types'
+
+interface Props {
+  content: SiteContent
+  altLocale: 'zh' | 'en'
+  altPath: string
+  homePath?: string
+}
+
+const { content, altLocale, altPath, homePath = import.meta.env.BASE_URL } = Astro.props
+const docsUrl = content.locale === 'zh' ? links.helpZh : links.helpEn
+---
+
+<!doctype html>
+<html lang={content.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={content.description} />
+    <meta name="theme-color" content="#0b0d10" />
+    <meta property="og:title" content={content.title} />
+    <meta property="og:description" content={content.description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <title>{content.title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={homePath}>
+          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width="28" height="28" />
+          <span>AssetVault</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">{content.nav.features}</a>
+          <a href="#products">{content.nav.products}</a>
+          <a href="#download">{content.nav.download}</a>
+          <a href={docsUrl} target="_blank" rel="noopener noreferrer">{content.nav.docs}</a>
+          <a href={links.proRepo} target="_blank" rel="noopener noreferrer">{content.nav.github}</a>
+        </nav>
+        <a class="lang-switch" href={altPath} hreflang={altLocale === 'zh' ? 'zh-CN' : 'en'}>
+          {altLocale === 'zh' ? '中文' : 'EN'}
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="footer-brand">AssetVault</p>
+        <p>{content.footer.license}</p>
+        <p>{content.footer.trademark}</p>
+        <p>{content.footer.community}</p>
+        <div class="footer-links">
+          <a href={links.proRepo}>AssetVault Pro</a>
+          <a href={links.extRepo}>Browser Extension</a>
+          <a href={links.releases}>Releases</a>
+          <a href={links.contributing}>Contributing</a>
+          <a href={links.security}>Security</a>
+        </div>
+        <p class="footer-copy">© {new Date().getFullYear()} AssetVault contributors</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(12px);
+    background: rgba(11, 13, 16, 0.85);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .brand:hover {
+    color: var(--text);
+  }
+
+  .nav {
+    display: none;
+    gap: 1.25rem;
+    margin-left: auto;
+    font-size: 0.92rem;
+  }
+
+  .nav a {
+    color: var(--text-muted);
+  }
+
+  .nav a:hover {
+    color: var(--text);
+  }
+
+  .lang-switch {
+    margin-left: auto;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .lang-switch:hover {
+    border-color: var(--accent);
+    color: var(--accent-hover);
+  }
+
+  @media (min-width: 768px) {
+    .nav {
+      display: flex;
+    }
+
+    .lang-switch {
+      margin-left: 0;
+    }
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0 2rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .footer-brand {
+    color: var(--text);
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .footer-inner p {
+    margin: 0.35rem 0;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    margin: 1.25rem 0;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    opacity: 0.8;
+  }
+</style>
