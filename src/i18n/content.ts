@@ -22,7 +22,9 @@ const zh: SiteContent = {
     ctaDownload: '下载桌面端',
     ctaExtension: '浏览器扩展',
     ctaDocs: '帮助文档',
-    note: '需先安装并启动 AssetVault Pro，再在设置中启用 Web API（默认 127.0.0.1:41596）。'
+    note: '需先安装并启动 AssetVault Pro，再在设置中启用 Web API（默认 127.0.0.1:41596）。',
+    screenshotLightAlt: 'AssetVault Pro 浅色主题界面',
+    screenshotDarkAlt: 'AssetVault Pro 深色主题界面'
   },
   features: {
     title: '为创作工作流设计',
@@ -62,8 +64,8 @@ const zh: SiteContent = {
       description: 'Electron + React 跨平台桌面 DAM（社区版）。',
       bullets: [
         '拖拽导入、预览、搜索、标签与文件夹',
-        'EXR / 3D / 字体 / Markdown 等高级预览',
-        'GitHub Releases 安装包（Windows / macOS / Linux）'
+        'EXR / 3D模型 / 字体 / Markdown 等高级预览',
+        'GitHub Releases 安装包（Windows）'
       ],
       link: links.proRepo
     },
@@ -83,7 +85,7 @@ const zh: SiteContent = {
     subtitle: '从 GitHub Releases 获取最新安装包',
     primary: '下载 AssetVault Pro',
     secondary: '查看扩展仓库',
-    requirements: 'Windows 10/11（主要目标）· macOS · Linux · Node 18+ 仅开发构建需要',
+    requirements: 'Windows 10/11（主要目标）',
     alpha: '当前为 V0.5 Alpha：API 与磁盘格式可能在版本间变更，升级前请备份资料库。'
   },
   footer: {
@@ -108,13 +110,15 @@ const en: SiteContent = {
   },
   hero: {
     badge: 'Community Edition · MIT · V0.5 Alpha',
-    title: 'Local digital asset management\nfrom capture to search',
+    title: 'Local digital asset management,\nfrom capture to search',
     subtitle:
       'AssetVault Pro organizes images, video, audio, fonts, 3D, and design files. The browser extension imports web media through a local Web API while the desktop app downloads and ingests assets.',
     ctaDownload: 'Download desktop app',
     ctaExtension: 'Browser extension',
     ctaDocs: 'Documentation',
-    note: 'Install and run AssetVault Pro first, then enable Web API in Settings (default 127.0.0.1:41596).'
+    note: 'Install and run AssetVault Pro first, then enable Web API in Settings (default 127.0.0.1:41596).',
+    screenshotLightAlt: 'AssetVault Pro light theme',
+    screenshotDarkAlt: 'AssetVault Pro dark theme'
   },
   features: {
     title: 'Built for creative workflows',
@@ -154,8 +158,8 @@ const en: SiteContent = {
       description: 'Cross-platform Electron + React DAM (Community Edition).',
       bullets: [
         'Import, preview, search, tags, and folders',
-        'Advanced preview: EXR, 3D, fonts, Markdown, and more',
-        'Installers on GitHub Releases (Windows / macOS / Linux)'
+        'Advanced preview: EXR, 3D models, fonts, Markdown, and more',
+        'Installers on GitHub Releases (Windows)'
       ],
       link: links.proRepo
     },
@@ -175,7 +179,7 @@ const en: SiteContent = {
     subtitle: 'Pick up the latest build from GitHub Releases',
     primary: 'Download AssetVault Pro',
     secondary: 'Extension repository',
-    requirements: 'Windows 10/11 (primary) · macOS · Linux · Node 18+ only for building from source',
+    requirements: 'Windows 10/11 (primary)',
     alpha: 'V0.5 Alpha: APIs and on-disk formats may change between releases. Back up libraries before upgrading.'
   },
   footer: {

@@ -24,14 +24,14 @@ const docsUrl = content.locale === 'zh' ? links.helpZh : links.helpEn
     <meta property="og:title" content={content.title} />
     <meta property="og:description" content={content.description} />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} sizes="any" />
     <title>{content.title}</title>
   </head>
   <body>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href={homePath}>
-          <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" width="28" height="28" />
+          <img src={`${import.meta.env.BASE_URL}favicon.ico`} alt="" width="28" height="28" />
           <span>AssetVault</span>
         </a>
         <nav class="nav" aria-label="Primary">

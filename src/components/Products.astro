@@ -7,6 +7,7 @@ interface Props {
 
 const { content } = Astro.props
 const { desktop, extension } = content.products
+const favicon = `${import.meta.env.BASE_URL}favicon.ico`
 ---
 
 <section id="products" class="section products">
@@ -15,7 +16,7 @@ const { desktop, extension } = content.products
     <p class="section-subtitle">{content.products.subtitle}</p>
     <div class="product-grid">
       <article class="product-card">
-        <div class="product-icon desktop" aria-hidden="true"></div>
+        <img class="product-icon" src={favicon} alt="" width="48" height="48" />
         <h3>{desktop.title}</h3>
         <p>{desktop.description}</p>
         <ul>
@@ -28,7 +29,7 @@ const { desktop, extension } = content.products
         </a>
       </article>
       <article class="product-card">
-        <div class="product-icon extension" aria-hidden="true"></div>
+        <img class="product-icon" src={favicon} alt="" width="48" height="48" />
         <h3>{extension.title}</h3>
         <p>{extension.description}</p>
         <ul>
@@ -67,16 +68,8 @@ const { desktop, extension } = content.products
     height: 48px;
     border-radius: 12px;
     margin-bottom: 1rem;
-  }
-
-  .product-icon.desktop {
-    background: linear-gradient(135deg, rgba(61, 126, 255, 0.35), rgba(61, 126, 255, 0.08));
-    border: 1px solid rgba(61, 126, 255, 0.4);
-  }
-
-  .product-icon.extension {
-    background: linear-gradient(135deg, rgba(61, 214, 140, 0.3), rgba(61, 214, 140, 0.08));
-    border: 1px solid rgba(61, 214, 140, 0.35);
+    display: block;
+    object-fit: contain;
   }
 
   .product-card h3 {

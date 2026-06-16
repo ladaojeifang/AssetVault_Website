@@ -20,6 +20,8 @@ export type SiteContent = {
     ctaExtension: string
     ctaDocs: string
     note: string
+    screenshotLightAlt: string
+    screenshotDarkAlt: string
   }
   features: {
     title: string
